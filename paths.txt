@@ -1,0 +1,50 @@
+======================================================================
+-DRF Project 
+
+urlpatterns = [
+    path('<int:pk>/', PostDetail.as_view(), name='detailcreate'),
+    path('',PostList.as_view(), name='listcreate'),
+]
+
+path('admin/', admin.site.urls),
+path('', include('blog.urls', namespace='blog')),
+path('api/', include('blog_api.urls', namespace='blog_api')),
+
+======================================================================
+-pragmatic Project 
+
+urlpatterns = [
+    path('hello_world/', hello_world, name='hello_world')
+]
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('account/', include('accountapp.urls')),
+]
+http://127.0.0.1:8000/account/hello_world/
+
+======================================================================
+-pragmatic_drf Project
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+
+    path('accounts/', include('accountapp.urls')),
+
+    path('api-auth/', include('rest_framework.urls'))
+]
+
+urlpatterns = [
+    path('hello_world/', hello_world),
+    path('hello_world_drf/', hello_world_drf),
+
+]
+
+======================================================================
+-rest_youtube_test Project 
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/student_list', StudentList.as_view(),name='student_list'),
+    path('api/student_list/<int:student_id>', StudentDetail.as_view(),name='student_list'),
+    path('api/auth', views.obtain_auth_token, name='obtain_auth_token'),
+]
